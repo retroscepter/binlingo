@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 13
+branches:
+  only:
+    - main
+cache:
+  directories:
+    - node_modules
+install:
+  - npm ci
+script:
+  - npm run build
+  - npm run test

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "target": "es2015",
+    "module": "commonjs",
+    "outDir": "lib",
+    "strict": true,
+    "declaration": true,
+    "declarationMap" : true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "src"
+  ]
+}
