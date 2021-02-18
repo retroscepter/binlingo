@@ -36,11 +36,11 @@ test('write a signed 32 bit integer', () => {
 })
 
 test('write a 32 bit float', () => {
-    writer.writeFloat32(2147483647.231802830750)
+    writer.writeFloat(2147483647.231802830750)
 })
 
 test('write a 64 bit float', () => {
-    writer.writeFloat64(4294967295.210382050384)
+    writer.writeDouble(4294967295.210382050384)
 })
 
 test('write a UCS-2 encoded string', () => {

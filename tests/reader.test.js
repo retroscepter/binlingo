@@ -4,15 +4,15 @@ const { Writer, Reader } = require('../lib')
 const writer = new Writer()
 
 writer.writeUInt8(255)
-writer.writeInt8(126)
+writer.writeInt8(127)
 writer.writeUInt16(65535)
 writer.writeInt16(32767)
 writer.writeUInt24(16777215)
 writer.writeInt24(8388607)
 writer.writeUInt32(4294967295)
 writer.writeInt32(2147483647)
-writer.writeFloat32(2147483647.231802830750)
-writer.writeFloat64(4294967295.210382050384)
+writer.writeFloat(999.999)
+writer.writeDouble(99999.99999)
 writer.writeZTStringUCS2('test')
 writer.writeZTStringUTF8('test')
 
@@ -24,7 +24,7 @@ test('read an unsigned 8 bit integer', () => {
 })
 
 test('read a signed 8 bit integer', () => {
-    expect(reader.readInt8()).toBe(126)
+    expect(reader.readInt8()).toBe(127)
 })
 
 test('read an unsigned 16 bit integer', () => {
@@ -52,11 +52,11 @@ test('read a signed 32 bit integer', () => {
 })
 
 test('read a 32 bit float', () => {
-    expect(reader.readFloat32()).toBe(2147483647.231802830750)
+    expect(reader.readFloat()).toBe(999.999)
 })
 
 test('read a 64 bit float', () => {
-    expect(reader.readFloat64()).toBe(4294967295.210382050384)
+    expect(reader.readDouble()).toBe(99999.99999)
 })
 
 test('read a UCS-2 encoded string', () => {
