@@ -52,7 +52,7 @@ test('read a signed 32 bit integer', () => {
 })
 
 test('read a 32 bit float', () => {
-    expect(reader.readFloat()).toBe(999.999)
+    expect(reader.readFloat().toFixed(3)).toBe('999.999')
 })
 
 test('read a 64 bit float', () => {
