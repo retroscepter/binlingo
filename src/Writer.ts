@@ -8,20 +8,20 @@ export class Writer {
     /**
      * Current Buffer.
      * 
-     * @public
+     * @private
      * 
      * @type {Buffer}
      */
-    public data: Buffer
+    private data: Buffer
 
     /**
      * Current position in the Buffer.
      * 
-     * @public
+     * @private
      * 
      * @type {number}
      */
-    public offset: number
+    private offset: number
 
     /**
      * Create a Binary Writer.
