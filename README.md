@@ -61,8 +61,8 @@ Represents a Binary Reader.
     * [.readInt24()](#Reader+readInt24) ⇒ <code>number</code>
     * [.readUInt32()](#Reader+readUInt32) ⇒ <code>number</code>
     * [.readInt32()](#Reader+readInt32) ⇒ <code>number</code>
-    * [.readFloat32()](#Reader+readFloat32) ⇒ <code>number</code>
-    * [.readFloat64()](#Reader+readFloat64) ⇒ <code>number</code>
+    * [.readFloat()](#Reader+readFloat) ⇒ <code>number</code>
+    * [.readDouble()](#Reader+readDouble) ⇒ <code>number</code>
     * [.skip(count)](#Reader+skip) ⇒ <code>void</code>
     * [.readZTStringUCS2()](#Reader+readZTStringUCS2) ⇒ <code>string</code>
     * [.readZTStringUTF8()](#Reader+readZTStringUTF8) ⇒ <code>string</code>
@@ -133,16 +133,16 @@ Read the unsigned 32 bit integer from the current position in the Buffer.
 Read the signed 32 bit integer from the current position in the Buffer.
 
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
-<a name="Reader+readFloat32"></a>
+<a name="Reader+readFloat"></a>
 
-### reader.readFloat32() ⇒ <code>number</code>
+### reader.readFloat() ⇒ <code>number</code>
 Read the 32 bit float from the current position in the Buffer.
 
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
-<a name="Reader+readFloat64"></a>
+<a name="Reader+readDouble"></a>
 
-### reader.readFloat64() ⇒ <code>number</code>
-Read the 64 bit float from the current position in the Buffer.
+### reader.readDouble() ⇒ <code>number</code>
+Read the 64 bit double from the current position in the Buffer.
 
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
 <a name="Reader+skip"></a>
@@ -185,8 +185,8 @@ Represents a Binary Writer.
     * [.writeInt24(a)](#Writer+writeInt24) ⇒ <code>void</code>
     * [.writeUInt32(a)](#Writer+writeUInt32) ⇒ <code>void</code>
     * [.writeInt32(a)](#Writer+writeInt32) ⇒ <code>void</code>
-    * [.writeFloat32(a)](#Writer+writeFloat32) ⇒ <code>void</code>
-    * [.writeFloat64(a)](#Writer+writeFloat64) ⇒ <code>void</code>
+    * [.writeFloat(a)](#Writer+writeFloat) ⇒ <code>void</code>
+    * [.writeDouble(a)](#Writer+writeDouble) ⇒ <code>void</code>
     * [.writeZTStringUCS2(a)](#Writer+writeZTStringUCS2) ⇒ <code>void</code>
     * [.writeZTStringUTF8(a)](#Writer+writeZTStringUTF8) ⇒ <code>void</code>
     * [.writeBytes(a)](#Writer+writeBytes) ⇒ <code>void</code>
@@ -290,9 +290,9 @@ Write a signed 32 bit integer to the current position in the Buffer.
 | --- | --- | --- |
 | a | <code>number</code> | Value |
 
-<a name="Writer+writeFloat32"></a>
+<a name="Writer+writeFloat"></a>
 
-### writer.writeFloat32(a) ⇒ <code>void</code>
+### writer.writeFloat(a) ⇒ <code>void</code>
 Write a 32 bit float to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
@@ -301,10 +301,10 @@ Write a 32 bit float to the current position in the Buffer.
 | --- | --- | --- |
 | a | <code>number</code> | Value |
 
-<a name="Writer+writeFloat64"></a>
+<a name="Writer+writeDouble"></a>
 
-### writer.writeFloat64(a) ⇒ <code>void</code>
-Write a 64 bit float to the current position in the Buffer.
+### writer.writeDouble(a) ⇒ <code>void</code>
+Write a 64 bit double to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
