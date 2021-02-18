@@ -41,7 +41,8 @@ export class Writer {
      * @returns {void}
      */
     writeUInt8 (a: number): void {
-        this.data[this.offset++] = a
+        this.data.writeUInt8(a, this.offset)
+        this.offset++
     }
 
     /**
@@ -52,7 +53,8 @@ export class Writer {
      * @returns {void}
      */
     writeInt8 (a: number): void {
-        this.data[this.offset++] = a
+        this.data.writeInt8(a, this.offset)
+        this.offset++
     }
 
     /**
@@ -134,19 +136,19 @@ export class Writer {
      * 
      * @returns {void}
      */
-    writeFloat32 (a: number): void {
+    writeFloat (a: number): void {
         this.data.writeFloatLE(a, this.offset)
         this.offset += 4
     }
 
     /**
-     * Write a 64 bit float to the current position in the Buffer.
+     * Write a 64 bit double to the current position in the Buffer.
      * 
      * @param {number} a Value
      * 
      * @returns {void}
      */
-    writeFloat64 (a: number): void {
+    writeDouble (a: number): void {
         this.data.writeDoubleLE(a, this.offset)
         this.offset += 8
     }

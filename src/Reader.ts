@@ -49,7 +49,9 @@ export class Reader {
      * @returns {number}
      */
     readUInt8 (): number {
-        return this.data[this.offset++]
+        const a = this.data.readUInt8(this.offset)
+        this.offset++
+        return a
     }
 
     /**
@@ -58,8 +60,9 @@ export class Reader {
      * @returns {number}
      */
     readInt8 (): number {
-        const a = this.data[this.offset++]
-        return a < 0x7F ? a : -a + 0x7F
+        const a = this.data.readInt8(this.offset)
+        this.offset++
+        return a
     }
 
     /**
@@ -133,18 +136,18 @@ export class Reader {
      * 
      * @returns {number}
      */
-    readFloat32 (): number {
+    readFloat (): number {
         const a = this.data.readFloatLE(this.offset)
         this.offset += 4
         return a
     }
 
     /**
-     * Read the 64 bit float from the current position in the Buffer.
+     * Read the 64 bit double from the current position in the Buffer.
      * 
      * @returns {number}
      */
-    readFloat64 (): number {
+    readDouble (): number {
         const a = this.data.readDoubleLE(this.offset)
         this.offset += 8
         return a
