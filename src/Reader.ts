@@ -180,6 +180,6 @@ export class Reader {
     readZTStringUTF8 (): string {
         let start = this.offset, index = this.offset
         while (index + 1 < this.length && this.readUInt8() !== 0) index++
-        return this.data.slice(start, index).toString('utf-8')
+        return this.data.slice(start, index).toString('utf8')
     }
 }
