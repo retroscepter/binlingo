@@ -49,9 +49,9 @@ export class Reader {
      * @returns {number}
      */
     readUInt8 (): number {
-        const a = this.data.readUInt8(this.offset)
+        const value = this.data.readUInt8(this.offset)
         this.offset++
-        return a
+        return value
     }
 
     /**
@@ -60,9 +60,9 @@ export class Reader {
      * @returns {number}
      */
     readInt8 (): number {
-        const a = this.data.readInt8(this.offset)
+        const value = this.data.readInt8(this.offset)
         this.offset++
-        return a
+        return value
     }
 
     /**
@@ -71,9 +71,9 @@ export class Reader {
      * @returns {number}
      */
     readUInt16 (): number {
-        const a = this.data.readUInt16LE(this.offset)
+        const value = this.data.readUInt16LE(this.offset)
         this.offset += 2
-        return a
+        return value
     }
 
     /**
@@ -82,9 +82,9 @@ export class Reader {
      * @returns {number}
      */
     readInt16 (): number {
-        const a = this.data.readInt16LE(this.offset)
+        const value = this.data.readInt16LE(this.offset)
         this.offset += 2
-        return a
+        return value
     }
 
     /**
@@ -93,9 +93,9 @@ export class Reader {
      * @returns {number}
      */
     readUInt24 (): number {
-        const a = this.data.readUIntLE(this.offset, 3)
+        const value = this.data.readUIntLE(this.offset, 3)
         this.offset += 3
-        return a
+        return value
     }
 
     /**
@@ -104,9 +104,9 @@ export class Reader {
      * @returns {number}
      */
     readInt24 (): number {
-        const a = this.data.readIntLE(this.offset, 3)
+        const value = this.data.readIntLE(this.offset, 3)
         this.offset += 3
-        return a
+        return value
     }
 
     /**
@@ -115,9 +115,9 @@ export class Reader {
      * @returns {number}
      */
     readUInt32 (): number {
-        const a = this.data.readUInt32LE(this.offset)
+        const value = this.data.readUInt32LE(this.offset)
         this.offset += 4
-        return a
+        return value
     }
 
     /**
@@ -126,9 +126,9 @@ export class Reader {
      * @returns {number}
      */
     readInt32 (): number {
-        const a = this.data.readInt32LE(this.offset)
+        const value = this.data.readInt32LE(this.offset)
         this.offset += 4
-        return a
+        return value
     }
 
     /**
@@ -137,9 +137,9 @@ export class Reader {
      * @returns {number}
      */
     readFloat (): number {
-        const a = this.data.readFloatLE(this.offset)
+        const value = this.data.readFloatLE(this.offset)
         this.offset += 4
-        return a
+        return value
     }
 
     /**
@@ -148,9 +148,9 @@ export class Reader {
      * @returns {number}
      */
     readDouble (): number {
-        const a = this.data.readDoubleLE(this.offset)
+        const value = this.data.readDoubleLE(this.offset)
         this.offset += 8
-        return a
+        return value
     }
 
     /**
