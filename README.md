@@ -177,19 +177,19 @@ Represents a Binary Writer.
 
 * [Writer](#Writer)
     * [new Writer([offset])](#new_Writer_new)
-    * [.writeUInt8(a)](#Writer+writeUInt8) ⇒ <code>void</code>
-    * [.writeInt8(a)](#Writer+writeInt8) ⇒ <code>void</code>
-    * [.writeUInt16(a)](#Writer+writeUInt16) ⇒ <code>void</code>
-    * [.writeInt16(a)](#Writer+writeInt16) ⇒ <code>void</code>
-    * [.writeUInt24(a)](#Writer+writeUInt24) ⇒ <code>void</code>
-    * [.writeInt24(a)](#Writer+writeInt24) ⇒ <code>void</code>
-    * [.writeUInt32(a)](#Writer+writeUInt32) ⇒ <code>void</code>
-    * [.writeInt32(a)](#Writer+writeInt32) ⇒ <code>void</code>
-    * [.writeFloat(a)](#Writer+writeFloat) ⇒ <code>void</code>
-    * [.writeDouble(a)](#Writer+writeDouble) ⇒ <code>void</code>
-    * [.writeZTStringUCS2(a)](#Writer+writeZTStringUCS2) ⇒ <code>void</code>
-    * [.writeZTStringUTF8(a)](#Writer+writeZTStringUTF8) ⇒ <code>void</code>
-    * [.writeBytes(a)](#Writer+writeBytes) ⇒ <code>void</code>
+    * [.writeUInt8(value)](#Writer+writeUInt8) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeInt8(value)](#Writer+writeInt8) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeUInt16(value)](#Writer+writeUInt16) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeInt16(value)](#Writer+writeInt16) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeUInt24(value)](#Writer+writeUInt24) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeInt24(value)](#Writer+writeInt24) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeUInt32(value)](#Writer+writeUInt32) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeInt32(value)](#Writer+writeInt32) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeFloat(value)](#Writer+writeFloat) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeDouble(value)](#Writer+writeDouble) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeZTStringUCS2(string)](#Writer+writeZTStringUCS2) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeZTStringUTF8(string)](#Writer+writeZTStringUTF8) ⇒ [<code>Writer</code>](#Writer)
+    * [.writeBytes(buffer)](#Writer+writeBytes) ⇒ [<code>Writer</code>](#Writer)
     * [.finalize()](#Writer+finalize) ⇒ <code>Buffer</code>
 
 <a name="new_Writer_new"></a>
@@ -204,146 +204,146 @@ Create a Binary Writer.
 
 <a name="Writer+writeUInt8"></a>
 
-### writer.writeUInt8(a) ⇒ <code>void</code>
+### writer.writeUInt8(value) ⇒ [<code>Writer</code>](#Writer)
 Write an unsigned 8 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeInt8"></a>
 
-### writer.writeInt8(a) ⇒ <code>void</code>
+### writer.writeInt8(value) ⇒ [<code>Writer</code>](#Writer)
 Write a signed 8 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeUInt16"></a>
 
-### writer.writeUInt16(a) ⇒ <code>void</code>
+### writer.writeUInt16(value) ⇒ [<code>Writer</code>](#Writer)
 Write an unsigned 16 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeInt16"></a>
 
-### writer.writeInt16(a) ⇒ <code>void</code>
+### writer.writeInt16(value) ⇒ [<code>Writer</code>](#Writer)
 Write a signed 16 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeUInt24"></a>
 
-### writer.writeUInt24(a) ⇒ <code>void</code>
+### writer.writeUInt24(value) ⇒ [<code>Writer</code>](#Writer)
 Write an unsigned 24 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeInt24"></a>
 
-### writer.writeInt24(a) ⇒ <code>void</code>
+### writer.writeInt24(value) ⇒ [<code>Writer</code>](#Writer)
 Write a signed 24 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeUInt32"></a>
 
-### writer.writeUInt32(a) ⇒ <code>void</code>
+### writer.writeUInt32(value) ⇒ [<code>Writer</code>](#Writer)
 Write an unsigned 32 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeInt32"></a>
 
-### writer.writeInt32(a) ⇒ <code>void</code>
+### writer.writeInt32(value) ⇒ [<code>Writer</code>](#Writer)
 Write a signed 32 bit integer to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeFloat"></a>
 
-### writer.writeFloat(a) ⇒ <code>void</code>
+### writer.writeFloat(value) ⇒ [<code>Writer</code>](#Writer)
 Write a 32 bit float to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeDouble"></a>
 
-### writer.writeDouble(a) ⇒ <code>void</code>
+### writer.writeDouble(value) ⇒ [<code>Writer</code>](#Writer)
 Write a 64 bit double to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>number</code> | Value |
+| value | <code>number</code> | Value |
 
 <a name="Writer+writeZTStringUCS2"></a>
 
-### writer.writeZTStringUCS2(a) ⇒ <code>void</code>
+### writer.writeZTStringUCS2(string) ⇒ [<code>Writer</code>](#Writer)
 Write a UCS-2 encoded string to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>string</code> | Value |
+| string | <code>string</code> | Value |
 
 <a name="Writer+writeZTStringUTF8"></a>
 
-### writer.writeZTStringUTF8(a) ⇒ <code>void</code>
+### writer.writeZTStringUTF8(string) ⇒ [<code>Writer</code>](#Writer)
 Write a UTF-8 encoded string to the current position in the Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>string</code> | Value |
+| string | <code>string</code> | Value |
 
 <a name="Writer+writeBytes"></a>
 
-### writer.writeBytes(a) ⇒ <code>void</code>
+### writer.writeBytes(buffer) ⇒ [<code>Writer</code>](#Writer)
 Copy data to the current position in the Buffer from another Buffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>buffer</code> | Buffer to copy from |
+| buffer | <code>buffer</code> | Buffer to copy from |
 
 <a name="Writer+finalize"></a>
 
