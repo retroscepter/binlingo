@@ -38,11 +38,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeUInt8 (value: number): void {
+    writeUInt8 (value: number): Writer {
         this.data.writeUInt8(value, this.offset)
         this.offset++
+        return this
     }
 
     /**
@@ -50,11 +51,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeInt8 (value: number): void {
+    writeInt8 (value: number): Writer {
         this.data.writeInt8(value, this.offset)
         this.offset++
+        return this
     }
 
     /**
@@ -62,11 +64,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeUInt16 (value: number): void {
+    writeUInt16 (value: number): Writer {
         this.data.writeUInt16LE(value, this.offset)
         this.offset += 2
+        return this
     }
 
     /**
@@ -74,11 +77,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeInt16 (value: number): void {
+    writeInt16 (value: number): Writer {
         this.data.writeUInt16LE(value, this.offset)
         this.offset += 2
+        return this
     }
 
     /**
@@ -86,11 +90,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeUInt24 (value: number): void {
+    writeUInt24 (value: number): Writer {
         this.data.writeUIntLE(value, this.offset, 3)
         this.offset += 3
+        return this
     }
 
     /**
@@ -98,11 +103,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeInt24 (value: number): void {
+    writeInt24 (value: number): Writer {
         this.data.writeUIntLE(value, this.offset, 3)
         this.offset += 3
+        return this
     }
 
     /**
@@ -110,11 +116,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeUInt32 (value: number): void {
+    writeUInt32 (value: number): Writer {
         this.data.writeUInt32LE(value, this.offset)
         this.offset += 4
+        return this
     }
 
     /**
@@ -122,11 +129,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeInt32 (value: number): void {
+    writeInt32 (value: number): Writer {
         this.data.writeInt32LE(value, this.offset)
         this.offset += 4
+        return this
     }
 
     /**
@@ -134,11 +142,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeFloat (value: number): void {
+    writeFloat (value: number): Writer {
         this.data.writeFloatLE(value, this.offset)
         this.offset += 4
+        return this
     }
 
     /**
@@ -146,11 +155,12 @@ export class Writer {
      * 
      * @param {number} value Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeDouble (value: number): void {
+    writeDouble (value: number): Writer {
         this.data.writeDoubleLE(value, this.offset)
         this.offset += 8
+        return this
     }
 
     /**
@@ -158,15 +168,16 @@ export class Writer {
      * 
      * @param {string} string Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeZTStringUCS2 (string: string): void {
+    writeZTStringUCS2 (string: string): Writer {
         if (string) {
             const stringBuffer = Buffer.from(string, 'ucs2')
             this.offset += stringBuffer.copy(this.data, this.offset)
         }
         this.data[this.offset++] = 0
         this.data[this.offset++] = 0
+        return this
     }
 
     /**
@@ -174,14 +185,15 @@ export class Writer {
      * 
      * @param {string} string Value
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeZTStringUTF8 (string: string): void {
+    writeZTStringUTF8 (string: string): Writer {
         if (string) {
             const stringBuffer = Buffer.from(string, 'utf8')
             this.offset += stringBuffer.copy(this.data, this.offset)
         }
         this.data[this.offset++] = 0
+        return this
     }
 
     /**
@@ -189,10 +201,11 @@ export class Writer {
      * 
      * @param {buffer} buffer Buffer to copy from
      * 
-     * @returns {void}
+     * @returns {Writer}
      */
-    writeBytes (buffer: Buffer): void {
+    writeBytes (buffer: Buffer): Writer {
         this.offset += buffer.copy(this.data, this.offset, 0, buffer.length)
+        return this
     }
 
     /**

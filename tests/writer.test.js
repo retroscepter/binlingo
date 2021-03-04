@@ -58,3 +58,18 @@ test('write a buffer', () => {
 test('finalize', () => {
     writer.finalize()
 })
+
+test('chaining', () => {
+    const buffer = new Writer()
+        .writeInt8(0)
+        .writeUInt8(0)
+        .writeInt16(0)
+        .writeUInt16(0)
+        .writeInt24(0)
+        .writeUInt24(0)
+        .writeInt32(0)
+        .writeUInt32(0)
+        .writeZTStringUCS2('test')
+        .writeZTStringUTF8('test')
+        .finalize()
+})
