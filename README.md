@@ -1,6 +1,4 @@
-# binlingo [![Build
-Status](https://travis-ci.com/octavetoast/binlingo.svg?branch=main)](https://travis-ci.com/octavetoast/binlingo) [![view
-on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
+# binlingo [![Build Status](https://travis-ci.com/octavetoast/binlingo.svg?branch=main)](https://travis-ci.com/octavetoast/binlingo) [![view on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
 
 Binary readers and writers made easy in JavaScript.
 
@@ -14,7 +12,7 @@ npm install --save binlingo
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
-<script src="https://unpkg.com/binlingo@1.1.0/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@1.1.2/dist/binlingo.js"></script>
 ```
 
 ## Usage
