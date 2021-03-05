@@ -10,8 +10,11 @@
     "build:watch": "npx tsc -w -p tsconfig.json",
     "build:docs": "npm run build && npm run docs",
     "build:test": "npm run build && npm run test",
+    "build:bundle": "npm run build && npm run bundle",
+    "bundle": "npx webpack",
     "docs": "npx jsdoc2md lib/constants.js lib/Reader.js lib/Writer.js --template README.hbs > README.md",
-    "test": "jest --env=node"
+    "test": "jest --env=node",
+    "prepublishOnly": "npm run build:bundle"
   },
   "repository": {
     "type": "git",
