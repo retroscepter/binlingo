@@ -4,43 +4,43 @@ const { Writer, POOL_SIZE } = require('../lib')
 const writer = new Writer()
 
 test('write an unsigned 8 bit integer', () => {
-    writer.writeUInt8(255)
+    writer.writeUInt8(0)
 })
 
 test('write a signed 8 bit integer', () => {
-    writer.writeInt8(126)
+    writer.writeInt8(0)
 })
 
 test('write an unsigned 16 bit integer', () => {
-    writer.writeUInt16(65535)
+    writer.writeUInt16(1)
 })
 
 test('write a signed 16 bit integer', () => {
-    writer.writeInt16(32767)
+    writer.writeInt16(1)
 })
 
 test('write an unsigned 24 bit integer', () => {
-    writer.writeUInt24(16777215)
+    writer.writeUInt24(2)
 })
 
 test('write a signed 24 bit integer', () => {
-    writer.writeInt24(8388607)
+    writer.writeInt24(2)
 })
 
 test('write an unsigned 32 bit integer', () => {
-    writer.writeUInt32(4294967295)
+    writer.writeUInt32(3)
 })
 
 test('write a signed 32 bit integer', () => {
-    writer.writeInt32(2147483647)
+    writer.writeInt32(3)
 })
 
 test('write a 32 bit float', () => {
-    writer.writeFloat(2147483647.231802830750)
+    writer.writeFloat(3.14)
 })
 
 test('write a 64 bit float', () => {
-    writer.writeDouble(4294967295.210382050384)
+    writer.writeDouble(4.0001)
 })
 
 test('write a UCS-2 encoded string', () => {
