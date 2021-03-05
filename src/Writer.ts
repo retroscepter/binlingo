@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer'
+
 import { POOL_SIZE } from './constants'
 
 /**
