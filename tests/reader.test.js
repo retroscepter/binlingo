@@ -1,4 +1,3 @@
-
 const { Writer, Reader } = require('../lib')
 
 const writer = new Writer()
@@ -35,11 +34,11 @@ test('read a signed 16 bit integer', () => {
     expect(reader.readInt16()).toBe(1)
 })
 
-test('read an unsigned 24 bit integer', () => {
+test('read an unsigned 24 bit integer (deprecated)', () => {
     expect(reader.readUInt24()).toBe(2)
 })
 
-test('read a signed 24 bit integer', () => {
+test('read a signed 24 bit integer (deprecated)', () => {
     expect(reader.readInt24()).toBe(2)
 })
 
@@ -63,7 +62,6 @@ test('read a UCS-2 encoded string', () => {
     expect(reader.readZTStringUCS2()).toBe('test')
 })
 
-test('read a UTF-8 encoded string', () => {
+test('read a UTF-8 encoded string (deprecated)', () => {
     expect(reader.readZTStringUTF8()).toBe('test')
 })
-

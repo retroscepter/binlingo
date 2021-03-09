@@ -1,6 +1,6 @@
 /**
- * Default pool size of each Buffer.
+ * Default byte length of each ArrayBuffer.
  *
  * @type {number}
  */
-export const POOL_SIZE: number = 1048576
+export const BYTE_LENGTH: number = 1048576

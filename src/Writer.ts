@@ -1,22 +1,29 @@
-import { Buffer } from 'buffer'
-
-import { POOL_SIZE } from './constants'
+import { BYTE_LENGTH } from './constants'
 
 /**
  * Represents a Binary Writer.
  */
 export class Writer {
     /**
-     * Current Buffer.
+     * Current ArrayBuffer.
      *
      * @private
      *
-     * @type {Buffer}
+     * @type {ArrayBuffer}
      */
-    private data: Buffer
+    private data: ArrayBuffer
 
     /**
-     * Current position in the Buffer.
+     * Current DataView.
+     *
+     * @private
+     *
+     * @type {DataView}
+     */
+    private view: DataView
+
+    /**
+     * Current position in the DataView.
      *
      * @private
      *
@@ -30,7 +37,8 @@ export class Writer {
      * @param {number} [offset] Position in the Buffer to start from
      */
     constructor(offset?: number) {
-        this.data = Buffer.allocUnsafe(POOL_SIZE)
+        this.data = new ArrayBuffer(BYTE_LENGTH)
+        this.view = new DataView(this.data)
         this.offset = offset || 0
     }
 
@@ -42,7 +50,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeUInt8(value: number): Writer {
-        this.data.writeUInt8(value, this.offset)
+        this.view.setUint8(this.offset, value)
         this.offset++
         return this
     }
@@ -55,7 +63,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeInt8(value: number): Writer {
-        this.data.writeInt8(value, this.offset)
+        this.view.setInt8(this.offset, value)
         this.offset++
         return this
     }
@@ -68,7 +76,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeUInt16(value: number): Writer {
-        this.data.writeUInt16LE(value, this.offset)
+        this.view.setUint16(this.offset, value, true)
         this.offset += 2
         return this
     }
@@ -81,35 +89,39 @@ export class Writer {
      * @returns {Writer}
      */
     writeInt16(value: number): Writer {
-        this.data.writeUInt16LE(value, this.offset)
+        this.view.setInt16(this.offset, value, true)
         this.offset += 2
         return this
     }
 
     /**
      * Write an unsigned 24 bit integer to the current position in the Buffer.
+     * Actually writes an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+     * Use `Writer.writeUInt32()`.
+     *
+     * @deprecated
      *
      * @param {number} value Value
      *
      * @returns {Writer}
      */
     writeUInt24(value: number): Writer {
-        this.data.writeUIntLE(value, this.offset, 3)
-        this.offset += 3
-        return this
+        return this.writeUInt32(value)
     }
 
     /**
      * Write a signed 24 bit integer to the current position in the Buffer.
+     * Actually writes a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+     * Use `Writer.writeInt32()`.
+     *
+     * @deprecated
      *
      * @param {number} value Value
      *
      * @returns {Writer}
      */
     writeInt24(value: number): Writer {
-        this.data.writeUIntLE(value, this.offset, 3)
-        this.offset += 3
-        return this
+        return this.writeInt32(value)
     }
 
     /**
@@ -120,7 +132,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeUInt32(value: number): Writer {
-        this.data.writeUInt32LE(value, this.offset)
+        this.view.setUint32(this.offset, value, true)
         this.offset += 4
         return this
     }
@@ -133,7 +145,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeInt32(value: number): Writer {
-        this.data.writeInt32LE(value, this.offset)
+        this.view.setInt32(this.offset, value, true)
         this.offset += 4
         return this
     }
@@ -146,7 +158,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeFloat(value: number): Writer {
-        this.data.writeFloatLE(value, this.offset)
+        this.view.setFloat32(this.offset, value, true)
         this.offset += 4
         return this
     }
@@ -159,7 +171,7 @@ export class Writer {
      * @returns {Writer}
      */
     writeDouble(value: number): Writer {
-        this.data.writeDoubleLE(value, this.offset)
+        this.view.setFloat64(this.offset, value, true)
         this.offset += 8
         return this
     }
@@ -173,11 +185,12 @@ export class Writer {
      */
     writeZTStringUCS2(string: string): Writer {
         if (string) {
-            const stringBuffer = Buffer.from(string, 'ucs2')
-            this.offset += stringBuffer.copy(this.data, this.offset)
+            for (const char of string) {
+                const code = char.charCodeAt(0)
+                this.writeUInt16(code)
+            }
         }
-        this.data[this.offset++] = 0
-        this.data[this.offset++] = 0
+        this.writeUInt16(0)
         return this
     }
 
@@ -190,33 +203,35 @@ export class Writer {
      */
     writeZTStringUTF8(string: string): Writer {
         if (string) {
-            const stringBuffer = Buffer.from(string, 'utf8')
-            this.offset += stringBuffer.copy(this.data, this.offset)
+            for (const char of string) {
+                const code = char.charCodeAt(0)
+                this.writeUInt8(code)
+            }
         }
-        this.data[this.offset++] = 0
+        this.writeUInt8(0)
         return this
     }
 
     /**
      * Copy data to the current position in the Buffer from another Buffer.
+     * This method does nothing and is only here for backwards compatibility.
      *
-     * @param {buffer} buffer Buffer to copy from
+     * @deprecated
+     *
+     * @param {ArrayBuffer} buffer Buffer to copy from
      *
      * @returns {Writer}
      */
-    writeBytes(buffer: Buffer): Writer {
-        this.offset += buffer.copy(this.data, this.offset, 0, buffer.length)
+    writeBytes(buffer: ArrayBuffer): Writer {
         return this
     }
 
     /**
-     * Return the current Buffer.
+     * Return the current ArrayBuffer.
      *
-     * @returns {Buffer}
+     * @returns {ArrayBuffer}
      */
-    finalize(): Buffer {
-        const buffer = Buffer.allocUnsafe(this.offset)
-        this.data.copy(buffer, 0, 0, this.offset)
-        return buffer
+    finalize(): ArrayBuffer {
+        return this.data
     }
 }

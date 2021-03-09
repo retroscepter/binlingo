@@ -1,5 +1,4 @@
-
-const { Writer, POOL_SIZE } = require('../lib')
+const { Writer } = require('../lib')
 
 const writer = new Writer()
 
@@ -19,11 +18,11 @@ test('write a signed 16 bit integer', () => {
     writer.writeInt16(1)
 })
 
-test('write an unsigned 24 bit integer', () => {
+test('write an unsigned 24 bit integer (deprecated)', () => {
     writer.writeUInt24(2)
 })
 
-test('write a signed 24 bit integer', () => {
+test('write a signed 24 bit integer (deprecated)', () => {
     writer.writeInt24(2)
 })
 
@@ -47,12 +46,8 @@ test('write a UCS-2 encoded string', () => {
     writer.writeZTStringUCS2('test')
 })
 
-test('write a UTF-8 encoded string', () => {
+test('write a UTF-8 encoded string (deprecated)', () => {
     writer.writeZTStringUTF8('test')
-})
-
-test('write a buffer', () => {
-    writer.writeBytes(Buffer.allocUnsafe(POOL_SIZE))
 })
 
 test('finalize', () => {

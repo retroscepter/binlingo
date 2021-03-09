@@ -1,5 +1,3 @@
-import { Buffer } from 'buffer'
-
 /**
  * Represents a Binary Reader.
  */
@@ -9,9 +7,18 @@ export class Reader {
      *
      * @private
      *
-     * @type {Buffer}
+     * @type {ArrayBuffer}
      */
-    private data: Buffer
+    private data: ArrayBuffer
+
+    /**
+     * Current DataView.
+     *
+     * @private
+     *
+     * @type {DataView}
+     */
+    private view: DataView
 
     /**
      * Current position in the Buffer.
@@ -25,23 +32,24 @@ export class Reader {
     /**
      * Create a Binary Reader.
      *
-     * @param {Buffer} data Buffer to read from
-     * @param {number} [offset] Position in the Buffer to start from
+     * @param {ArrayBuffer} data ArrayBuffer to read from
+     * @param {number} [offset] Position in the ArrayBuffer to start from
      */
-    constructor(data: Buffer, offset?: number) {
+    constructor(data: ArrayBuffer, offset?: number) {
         this.data = data
         this.offset = offset || 0
+        this.view = new DataView(this.data)
     }
 
     /**
-     * Length of the current Buffer.
+     * Byte length of the current ArrayBuffer.
      *
      * @public
      *
      * @returns {number}
      */
     public get length(): number {
-        return this.data.length
+        return this.view.byteLength
     }
 
     /**
@@ -50,7 +58,7 @@ export class Reader {
      * @returns {number}
      */
     readUInt8(): number {
-        const value = this.data.readUInt8(this.offset)
+        const value = this.view.getUint8(this.offset)
         this.offset++
         return value
     }
@@ -61,7 +69,7 @@ export class Reader {
      * @returns {number}
      */
     readInt8(): number {
-        const value = this.data.readInt8(this.offset)
+        const value = this.view.getInt8(this.offset)
         this.offset++
         return value
     }
@@ -72,7 +80,7 @@ export class Reader {
      * @returns {number}
      */
     readUInt16(): number {
-        const value = this.data.readUInt16LE(this.offset)
+        const value = this.view.getUint16(this.offset, true)
         this.offset += 2
         return value
     }
@@ -83,31 +91,35 @@ export class Reader {
      * @returns {number}
      */
     readInt16(): number {
-        const value = this.data.readInt16LE(this.offset)
+        const value = this.view.getInt16(this.offset, true)
         this.offset += 2
         return value
     }
 
     /**
      * Read the unsigned 24 bit integer from the current position in the Buffer.
+     * Actually read an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+     * Use `Reader.readUInt32()`.
+     *
+     * @deprecated
      *
      * @returns {number}
      */
     readUInt24(): number {
-        const value = this.data.readUIntLE(this.offset, 3)
-        this.offset += 3
-        return value
+        return this.readUInt32()
     }
 
     /**
      * Read the signed 24 bit integer from the current position in the Buffer.
+     * Actually reads a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+     * Use `Reader.readInt32()`.
+     *
+     * @deprecated
      *
      * @returns {number}
      */
     readInt24(): number {
-        const value = this.data.readIntLE(this.offset, 3)
-        this.offset += 3
-        return value
+        return this.readInt32()
     }
 
     /**
@@ -116,7 +128,7 @@ export class Reader {
      * @returns {number}
      */
     readUInt32(): number {
-        const value = this.data.readUInt32LE(this.offset)
+        const value = this.view.getUint32(this.offset, true)
         this.offset += 4
         return value
     }
@@ -127,7 +139,7 @@ export class Reader {
      * @returns {number}
      */
     readInt32(): number {
-        const value = this.data.readInt32LE(this.offset)
+        const value = this.view.getInt32(this.offset, true)
         this.offset += 4
         return value
     }
@@ -138,7 +150,7 @@ export class Reader {
      * @returns {number}
      */
     readFloat(): number {
-        const value = this.data.readFloatLE(this.offset)
+        const value = this.view.getFloat32(this.offset, true)
         this.offset += 4
         return value
     }
@@ -149,7 +161,7 @@ export class Reader {
      * @returns {number}
      */
     readDouble(): number {
-        const value = this.data.readDoubleLE(this.offset)
+        const value = this.view.getFloat64(this.offset, true)
         this.offset += 8
         return value
     }
@@ -171,10 +183,17 @@ export class Reader {
      * @returns {string}
      */
     readZTStringUCS2(): string {
-        let start = this.offset,
-            index = this.offset
-        while (index + 2 < this.length && this.readUInt16() !== 0) index += 2
-        return this.data.slice(start, index).toString('ucs2')
+        let index = this.offset
+        const array: number[] = []
+        while (index + 2 < this.length) {
+            const code = this.readUInt16()
+            if (code === 0) break
+            else {
+                array.push(code)
+                index += 2
+            }
+        }
+        return array.reduce((s, c) => s + String.fromCharCode(c), '')
     }
 
     /**
@@ -183,9 +202,16 @@ export class Reader {
      * @returns {string}
      */
     readZTStringUTF8(): string {
-        let start = this.offset,
-            index = this.offset
-        while (index + 1 < this.length && this.readUInt8() !== 0) index++
-        return this.data.slice(start, index).toString('utf8')
+        let index = this.offset
+        const array: number[] = []
+        while (index + 1 < this.length) {
+            const code = this.readUInt8()
+            if (code === 0) break
+            else {
+                array.push(code)
+                index += 1
+            }
+        }
+        return array.reduce((s, c) => s + String.fromCharCode(c), '')
     }
 }
