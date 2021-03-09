@@ -13,7 +13,9 @@
     "build:bundle": "npm run build && npm run bundle",
     "bundle": "npx webpack",
     "docs": "npx jsdoc2md lib/constants.js lib/Reader.js lib/Writer.js --template README.hbs > README.md",
-    "test": "jest --env=node",
+    "test": "npm run test:browser && npm run test:node",
+    "test:browser": "jest --env=jsdom",
+    "test:node": "jest --env=node",
     "prepublishOnly": "npm run build:bundle"
   },
   "repository": {
