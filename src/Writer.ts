@@ -35,9 +35,10 @@ export class Writer {
      * Create a Binary Writer.
      *
      * @param {number} [offset] Position in the Buffer to start from
+     * @param {number} [byteLength] Bytes of memory to allocate (defaults to 1048576)
      */
-    constructor(offset?: number) {
-        this.data = new ArrayBuffer(BYTE_LENGTH)
+    constructor(offset?: number, byteLength?: number) {
+        this.data = new ArrayBuffer(byteLength || BYTE_LENGTH)
         this.view = new DataView(this.data)
         this.offset = offset || 0
     }
@@ -232,6 +233,6 @@ export class Writer {
      * @returns {ArrayBuffer}
      */
     finalize(): ArrayBuffer {
-        return this.data
+        return this.data.slice(0, this.offset)
     }
 }

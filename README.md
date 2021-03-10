@@ -12,7 +12,7 @@ npm install --save binlingo
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
-<script src="https://unpkg.com/binlingo@1.2.0/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@1.2.1/dist/binlingo.js"></script>
 ```
 
 ## Usage
@@ -250,7 +250,7 @@ Represents a Binary Writer.
 **Kind**: global class  
 
 * [Writer](#Writer)
-    * [new Writer([offset])](#new_Writer_new)
+    * [new Writer([offset], [byteLength])](#new_Writer_new)
     * [.writeUInt8(value)](#Writer+writeUInt8) ⇒ [<code>Writer</code>](#Writer)
     * [.writeInt8(value)](#Writer+writeInt8) ⇒ [<code>Writer</code>](#Writer)
     * [.writeUInt16(value)](#Writer+writeUInt16) ⇒ [<code>Writer</code>](#Writer)
@@ -268,13 +268,14 @@ Represents a Binary Writer.
 
 <a name="new_Writer_new"></a>
 
-### new Writer([offset])
+### new Writer([offset], [byteLength])
 Create a Binary Writer.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [offset] | <code>number</code> | Position in the Buffer to start from |
+| [byteLength] | <code>number</code> | Bytes of memory to allocate (defaults to 1048576) |
 
 <a name="Writer+writeUInt8"></a>
 
