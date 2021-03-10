@@ -12,7 +12,7 @@ npm install --save binlingo
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
-<script src="https://unpkg.com/binlingo@1.1.4/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@1.2.0/dist/binlingo.js"></script>
 ```
 
 ## Usage
@@ -104,8 +104,8 @@ For detailed documentation on each of these methods, check the API documention b
 ## Members
 
 <dl>
-<dt><a href="#POOL_SIZE">POOL_SIZE</a> : <code>number</code></dt>
-<dd><p>Default pool size of each Buffer.</p>
+<dt><a href="#BYTE_LENGTH">BYTE_LENGTH</a> : <code>number</code></dt>
+<dd><p>Default byte length of each ArrayBuffer.</p>
 </dd>
 </dl>
 
@@ -123,8 +123,8 @@ Represents a Binary Reader.
     * [.readInt8()](#Reader+readInt8) ⇒ <code>number</code>
     * [.readUInt16()](#Reader+readUInt16) ⇒ <code>number</code>
     * [.readInt16()](#Reader+readInt16) ⇒ <code>number</code>
-    * [.readUInt24()](#Reader+readUInt24) ⇒ <code>number</code>
-    * [.readInt24()](#Reader+readInt24) ⇒ <code>number</code>
+    * ~~[.readUInt24()](#Reader+readUInt24) ⇒ <code>number</code>~~
+    * ~~[.readInt24()](#Reader+readInt24) ⇒ <code>number</code>~~
     * [.readUInt32()](#Reader+readUInt32) ⇒ <code>number</code>
     * [.readInt32()](#Reader+readInt32) ⇒ <code>number</code>
     * [.readFloat()](#Reader+readFloat) ⇒ <code>number</code>
@@ -141,13 +141,13 @@ Create a Binary Reader.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| data | <code>Buffer</code> | Buffer to read from |
-| [offset] | <code>number</code> | Position in the Buffer to start from |
+| data | <code>ArrayBuffer</code> | ArrayBuffer to read from |
+| [offset] | <code>number</code> | Position in the ArrayBuffer to start from |
 
 <a name="Reader+length"></a>
 
 ### reader.length ⇒ <code>number</code>
-Length of the current Buffer.
+Byte length of the current ArrayBuffer.
 
 **Kind**: instance property of [<code>Reader</code>](#Reader)  
 **Access**: public  
@@ -177,14 +177,22 @@ Read the signed 16 bit integer from the current position in the Buffer.
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
 <a name="Reader+readUInt24"></a>
 
-### reader.readUInt24() ⇒ <code>number</code>
+### ~~reader.readUInt24() ⇒ <code>number</code>~~
+***Deprecated***
+
 Read the unsigned 24 bit integer from the current position in the Buffer.
+Actually read an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Reader.readUInt32()`.
 
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
 <a name="Reader+readInt24"></a>
 
-### reader.readInt24() ⇒ <code>number</code>
+### ~~reader.readInt24() ⇒ <code>number</code>~~
+***Deprecated***
+
 Read the signed 24 bit integer from the current position in the Buffer.
+Actually reads a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Reader.readInt32()`.
 
 **Kind**: instance method of [<code>Reader</code>](#Reader)  
 <a name="Reader+readUInt32"></a>
@@ -247,16 +255,16 @@ Represents a Binary Writer.
     * [.writeInt8(value)](#Writer+writeInt8) ⇒ [<code>Writer</code>](#Writer)
     * [.writeUInt16(value)](#Writer+writeUInt16) ⇒ [<code>Writer</code>](#Writer)
     * [.writeInt16(value)](#Writer+writeInt16) ⇒ [<code>Writer</code>](#Writer)
-    * [.writeUInt24(value)](#Writer+writeUInt24) ⇒ [<code>Writer</code>](#Writer)
-    * [.writeInt24(value)](#Writer+writeInt24) ⇒ [<code>Writer</code>](#Writer)
+    * ~~[.writeUInt24(value)](#Writer+writeUInt24) ⇒ [<code>Writer</code>](#Writer)~~
+    * ~~[.writeInt24(value)](#Writer+writeInt24) ⇒ [<code>Writer</code>](#Writer)~~
     * [.writeUInt32(value)](#Writer+writeUInt32) ⇒ [<code>Writer</code>](#Writer)
     * [.writeInt32(value)](#Writer+writeInt32) ⇒ [<code>Writer</code>](#Writer)
     * [.writeFloat(value)](#Writer+writeFloat) ⇒ [<code>Writer</code>](#Writer)
     * [.writeDouble(value)](#Writer+writeDouble) ⇒ [<code>Writer</code>](#Writer)
     * [.writeZTStringUCS2(string)](#Writer+writeZTStringUCS2) ⇒ [<code>Writer</code>](#Writer)
     * [.writeZTStringUTF8(string)](#Writer+writeZTStringUTF8) ⇒ [<code>Writer</code>](#Writer)
-    * [.writeBytes(buffer)](#Writer+writeBytes) ⇒ [<code>Writer</code>](#Writer)
-    * [.finalize()](#Writer+finalize) ⇒ <code>Buffer</code>
+    * ~~[.writeBytes(buffer)](#Writer+writeBytes) ⇒ [<code>Writer</code>](#Writer)~~
+    * [.finalize()](#Writer+finalize) ⇒ <code>ArrayBuffer</code>
 
 <a name="new_Writer_new"></a>
 
@@ -314,8 +322,12 @@ Write a signed 16 bit integer to the current position in the Buffer.
 
 <a name="Writer+writeUInt24"></a>
 
-### writer.writeUInt24(value) ⇒ [<code>Writer</code>](#Writer)
+### ~~writer.writeUInt24(value) ⇒ [<code>Writer</code>](#Writer)~~
+***Deprecated***
+
 Write an unsigned 24 bit integer to the current position in the Buffer.
+Actually writes an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Writer.writeUInt32()`.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
@@ -325,8 +337,12 @@ Write an unsigned 24 bit integer to the current position in the Buffer.
 
 <a name="Writer+writeInt24"></a>
 
-### writer.writeInt24(value) ⇒ [<code>Writer</code>](#Writer)
+### ~~writer.writeInt24(value) ⇒ [<code>Writer</code>](#Writer)~~
+***Deprecated***
+
 Write a signed 24 bit integer to the current position in the Buffer.
+Actually writes a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Writer.writeInt32()`.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
@@ -402,24 +418,27 @@ Write a UTF-8 encoded string to the current position in the Buffer.
 
 <a name="Writer+writeBytes"></a>
 
-### writer.writeBytes(buffer) ⇒ [<code>Writer</code>](#Writer)
+### ~~writer.writeBytes(buffer) ⇒ [<code>Writer</code>](#Writer)~~
+***Deprecated***
+
 Copy data to the current position in the Buffer from another Buffer.
+This method does nothing and is only here for backwards compatibility.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| buffer | <code>buffer</code> | Buffer to copy from |
+| buffer | <code>ArrayBuffer</code> | Buffer to copy from |
 
 <a name="Writer+finalize"></a>
 
-### writer.finalize() ⇒ <code>Buffer</code>
-Return the current Buffer.
+### writer.finalize() ⇒ <code>ArrayBuffer</code>
+Return the current ArrayBuffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
-<a name="POOL_SIZE"></a>
+<a name="BYTE_LENGTH"></a>
 
-## POOL\_SIZE : <code>number</code>
-Default pool size of each Buffer.
+## BYTE\_LENGTH : <code>number</code>
+Default byte length of each ArrayBuffer.
 
 **Kind**: global variable  
