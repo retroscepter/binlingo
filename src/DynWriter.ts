@@ -230,13 +230,9 @@ export class DynWriter {
      * @returns {ArrayBuffer}
      */
     finalize(): ArrayBuffer {
-        let offset = 0
-        const byteLength = this.data.length
-        const buffer = new ArrayBuffer(byteLength)
-        const view = new DataView(buffer)
-        for (const int of this.data) {
-            view.setInt8(offset++, int)
-        }
+        const buffer = new ArrayBuffer(this.data.length)
+        const view = new Int8Array(buffer)
+        view.set(this.data)
         return buffer
     }
 }
