@@ -11,6 +11,7 @@
     "build:docs": "npm run build && npm run docs",
     "build:test": "npm run build && npm run test",
     "build:bundle": "npm run build && npm run bundle",
+    "benchmark": "node tests/benchmark.js",
     "bundle": "npx webpack",
     "docs": "npx jsdoc2md lib/constants.js lib/Reader.js lib/Writer.js lib/DynWriter.js --template README.hbs > README.md",
     "test": "npm run test:browser && npm run test:node",
@@ -30,6 +31,7 @@
   "homepage": "https://github.com/octavetoast/binlingo#readme",
   "devDependencies": {
     "@types/node": "^14.14.28",
+    "benchmark": "^2.1.4",
     "jest": "^26.6.3",
     "jsdoc-to-markdown": "^6.0.1",
     "prettier": "^2.2.1",
