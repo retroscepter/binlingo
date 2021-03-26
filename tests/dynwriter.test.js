@@ -1,6 +1,6 @@
-const { Writer, Reader } = require('../lib')
+const { DynWriter, Reader } = require('../lib')
 
-const writer = new Writer()
+const writer = new DynWriter()
 let buffer = null
 let reader = null
 
