@@ -1,7 +1,7 @@
 const Benchmark = require('benchmark')
 const { Writer, DynWriter } = require('../lib')
 
-const INT8_COUNT = 3000
+const INT8_COUNT = 1048576
 const WRITER_LABEL = 'Writer#finalize (setup and finalize)'
 const DYNWRITER_LABEL = 'DynWriter#finalize (setup and finalize)'
 
