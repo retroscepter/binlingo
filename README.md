@@ -12,7 +12,7 @@ npm install --save binlingo
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
-<script src="https://unpkg.com/binlingo@1.2.2/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@1.2.3/dist/binlingo.js"></script>
 ```
 
 ## Usage
