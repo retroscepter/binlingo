@@ -99,6 +99,9 @@ For detailed documentation on each of these methods, check the API documention b
 <dt><a href="#Writer">Writer</a></dt>
 <dd><p>Represents a Binary Writer.</p>
 </dd>
+<dt><a href="#DynWriter">DynWriter</a></dt>
+<dd><p>Represents a Binary Writer and dynamically allocates memory.</p>
+</dd>
 </dl>
 
 ## Members
@@ -437,6 +440,200 @@ This method does nothing and is only here for backwards compatibility.
 Return the current ArrayBuffer.
 
 **Kind**: instance method of [<code>Writer</code>](#Writer)  
+<a name="DynWriter"></a>
+
+## DynWriter
+Represents a Binary Writer and dynamically allocates memory.
+
+**Kind**: global class  
+
+* [DynWriter](#DynWriter)
+    * [new DynWriter([offset])](#new_DynWriter_new)
+    * [.writeUInt8(value)](#DynWriter+writeUInt8) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeInt8(value)](#DynWriter+writeInt8) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeUInt16(value)](#DynWriter+writeUInt16) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeInt16(value)](#DynWriter+writeInt16) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * ~~[.writeUInt24(value)](#DynWriter+writeUInt24) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+    * ~~[.writeInt24(value)](#DynWriter+writeInt24) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+    * [.writeUInt32(value)](#DynWriter+writeUInt32) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeInt32(value)](#DynWriter+writeInt32) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeFloat(value)](#DynWriter+writeFloat) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeDouble(value)](#DynWriter+writeDouble) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeZTStringUCS2(string)](#DynWriter+writeZTStringUCS2) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * [.writeZTStringUTF8(string)](#DynWriter+writeZTStringUTF8) ⇒ [<code>DynWriter</code>](#DynWriter)
+    * ~~[.writeBytes(buffer)](#DynWriter+writeBytes) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+    * [.finalize()](#DynWriter+finalize) ⇒ <code>ArrayBuffer</code>
+
+<a name="new_DynWriter_new"></a>
+
+### new DynWriter([offset])
+Create a Binary Writer than dynamically allocates memory.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [offset] | <code>number</code> | Position in the Buffer to start from |
+
+<a name="DynWriter+writeUInt8"></a>
+
+### dynWriter.writeUInt8(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write an unsigned 8 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeInt8"></a>
+
+### dynWriter.writeInt8(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a signed 8 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeUInt16"></a>
+
+### dynWriter.writeUInt16(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write an unsigned 16 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeInt16"></a>
+
+### dynWriter.writeInt16(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a signed 16 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeUInt24"></a>
+
+### ~~dynWriter.writeUInt24(value) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+***Deprecated***
+
+Write an unsigned 24 bit integer to the current position in the Buffer.
+Actually writes an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Writer.writeUInt32()`.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeInt24"></a>
+
+### ~~dynWriter.writeInt24(value) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+***Deprecated***
+
+Write a signed 24 bit integer to the current position in the Buffer.
+Actually writes a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
+Use `Writer.writeInt32()`.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeUInt32"></a>
+
+### dynWriter.writeUInt32(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write an unsigned 32 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeInt32"></a>
+
+### dynWriter.writeInt32(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a signed 32 bit integer to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeFloat"></a>
+
+### dynWriter.writeFloat(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a 32 bit float to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeDouble"></a>
+
+### dynWriter.writeDouble(value) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a 64 bit double to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Value |
+
+<a name="DynWriter+writeZTStringUCS2"></a>
+
+### dynWriter.writeZTStringUCS2(string) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a UCS-2 encoded string to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| string | <code>string</code> | Value |
+
+<a name="DynWriter+writeZTStringUTF8"></a>
+
+### dynWriter.writeZTStringUTF8(string) ⇒ [<code>DynWriter</code>](#DynWriter)
+Write a UTF-8 encoded string to the current position in the Buffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| string | <code>string</code> | Value |
+
+<a name="DynWriter+writeBytes"></a>
+
+### ~~dynWriter.writeBytes(buffer) ⇒ [<code>DynWriter</code>](#DynWriter)~~
+***Deprecated***
+
+Copy data to the current position in the Buffer from another Buffer.
+This method does nothing and is only here for backwards compatibility.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| buffer | <code>ArrayBuffer</code> | Buffer to copy from |
+
+<a name="DynWriter+finalize"></a>
+
+### dynWriter.finalize() ⇒ <code>ArrayBuffer</code>
+Return the current ArrayBuffer.
+
+**Kind**: instance method of [<code>DynWriter</code>](#DynWriter)  
 <a name="BYTE_LENGTH"></a>
 
 ## BYTE\_LENGTH : <code>number</code>
