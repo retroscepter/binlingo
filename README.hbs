@@ -1,4 +1,4 @@
-# binlingo [![Build Status](https://travis-ci.com/octavetoast/binlingo.svg?branch=main)](https://travis-ci.com/octavetoast/binlingo) [![view on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
+# binlingo [![Node.js CI](https://github.com/octavetoast/binlingo/actions/workflows/node.yml/badge.svg)](https://github.com/octavetoast/binlingo/actions/workflows/node.yml) [![view on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
 
 Binary readers and writers made easy in JavaScript.
 
