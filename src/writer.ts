@@ -1,4 +1,4 @@
-import { BYTE_LENGTH } from './constants'
+export const BYTE_LENGTH: number = 1048576
 
 /**
  * Represents a Binary Writer.

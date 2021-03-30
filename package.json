@@ -1,23 +1,11 @@
 {
   "name": "binlingo",
   "version": "1.2.4",
-  "description": "Speak binary with JavaScript! A binary reader and writer utility.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "description": "Binary reader and writer utilities for Deno, Node.js and browsers.",
+  "main": "lib/index-node.js",
+  "types": "lib/index-node.d.ts",
   "scripts": {
-    "lint": "npx prettier --write src",
-    "build": "npx tsc -p tsconfig.json",
-    "build:watch": "npx tsc -w -p tsconfig.json",
-    "build:docs": "npm run build && npm run docs",
-    "build:test": "npm run build && npm run test",
-    "build:bundle": "npm run build && npm run bundle",
-    "benchmark": "node tests/benchmark.js",
-    "bundle": "npx webpack",
-    "docs": "npx jsdoc2md lib/constants.js lib/Reader.js lib/Writer.js lib/DynWriter.js --template README.hbs > README.md",
-    "test": "npm run test:browser && npm run test:node",
-    "test:browser": "jest --env=jsdom",
-    "test:node": "jest --env=node",
-    "prepublishOnly": "npm run build:bundle"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -30,11 +18,6 @@
   },
   "homepage": "https://github.com/octavetoast/binlingo#readme",
   "devDependencies": {
-    "@types/node": "^14.14.28",
-    "benchmark": "^2.1.4",
-    "jest": "^26.6.3",
-    "jsdoc-to-markdown": "^6.0.1",
-    "prettier": "^2.2.1",
     "typescript": "^4.1.5",
     "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0"
