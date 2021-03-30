@@ -1,4 +1,4 @@
-# binlingo
+# binlingo [![Deno CI](https://github.com/octavetoast/binlingo/actions/workflows/deno.yml/badge.svg)](https://github.com/octavetoast/binlingo/actions/workflows/deno.yml) [![Coverage Status](https://coveralls.io/repos/github/octavetoast/binlingo/badge.svg?branch=main)](https://coveralls.io/github/octavetoast/binlingo?branch=main)
 
 Binary reader and writer utilities for Deno, Node.js and browsers.
 
