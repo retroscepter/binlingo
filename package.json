@@ -1,6 +1,6 @@
 {
   "name": "binlingo",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Speak binary with JavaScript! A binary reader and writer utility.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

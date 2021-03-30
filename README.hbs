@@ -14,7 +14,7 @@ For Deno projects, refer to the usage example below.
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
-<script src="https://unpkg.com/binlingo@1.2.3/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@1.2.4/dist/binlingo.js"></script>
 ```
 
 ## Usage
