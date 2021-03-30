@@ -1,6 +1,6 @@
 # binlingo
 
-Binary readers and writers made easy in JavaScript for Deno, Node.js and browsers.
+Binary reader and writer utilities for Deno, Node.js and browsers.
 
 ## Installation
 
