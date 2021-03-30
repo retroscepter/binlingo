@@ -82,4 +82,6 @@ console.log(reader.readZTStringUTF8()) // outputs "hello world"
 console.log(reader.readZTStringUCS2()) // outputs "hello world ☺"
 ```
 
-For detailed documentation on each of these methods, check the API documention below.
+## [Documentation](https://doc.deno.land/https/deno.land/x/binlingo/mod.ts)
+
+This module has first-class Deno support, documentation will always be available at [doc.deno.land](https://doc.deno.land/https/deno.land/x/binlingo/mod.ts).
