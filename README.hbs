@@ -1,6 +1,6 @@
-# binlingo [![Node.js CI](https://github.com/octavetoast/binlingo/actions/workflows/node.yml/badge.svg)](https://github.com/octavetoast/binlingo/actions/workflows/node.yml) [![view on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
+# binlingo [![Node.js CI](https://github.com/octavetoast/binlingo/actions/workflows/node.yml/badge.svg)](https://github.com/octavetoast/binlingo/actions/workflows/node.yml) [![Deno CI](https://github.com/octavetoast/binlingo-deno/actions/workflows/deno.yml/badge.svg)](https://github.com/octavetoast/binlingo-deno/actions/workflows/deno.yml) [![view on npm](http://img.shields.io/npm/v/binlingo.svg)](https://www.npmjs.org/package/binlingo)
 
-Binary readers and writers made easy in JavaScript.
+Binary readers and writers made easy in JavaScript/TypeScript, works in Node.js, Deno and the browser.
 
 ## Installation
 
@@ -9,6 +9,8 @@ For Node.js or webpack projects, install with the NPM package manager:
 ```Bash
 npm install --save binlingo
 ```
+
+For Deno projects, refer to the usage example below.
 
 For use in the browser without a bundler, include this script tag in your HTML.
 ```HTML
@@ -24,6 +26,9 @@ const { Reader, Writer } = require('binlingo')
 
 // esmodules
 import { Reader, Writer } from 'binlingo'
+
+// deno
+import { Reader, Writer } from 'https://deno.land/x/binlingo@1.2.4/mod.ts'
 
 // in the browser
 const { Reader, Writer } = window.Binlingo
