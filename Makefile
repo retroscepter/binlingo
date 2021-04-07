@@ -10,6 +10,9 @@ test-coverage:
 	deno test --coverage=coverage --unstable tests/*
 	deno coverage --unstable coverage --lcov > coverage/lcov.info
 
+docs:
+	npx typedoc
+
 dev:
 	npx tsc -w -p tsconfig.json
 
