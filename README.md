@@ -15,7 +15,7 @@ npm install --save binlingo
 For use in the browser without a bundler, include this script tag in your HTML.
 
 ```HTML
-<script src="https://unpkg.com/binlingo@1.2.7/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@2.0.0/dist/binlingo.js"></script>
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ const { Reader, Writer } = require('binlingo')
 import { Reader, Writer } from 'binlingo'
 
 // deno
-import { Reader, Writer } from 'https://deno.land/x/binlingo@1.2.7/mod.ts'
+import { Reader, Writer } from 'https://deno.land/x/binlingo@2.0.0/mod.ts'
 
 // in the browser
 const { Reader, Writer } = window.Binlingo
@@ -42,6 +42,8 @@ writer.writeInt8(0) // write a signed 8 bit int (1 byte)
 writer.writeUInt8(0) // write an unsigned 8 bit int (1 byte)
 writer.writeInt16(1) // write a signed 16 bit int (2 bytes)
 writer.writeUInt16(1) // write an unsigned 16 bit int (2 bytes)
+writer.writeInt24(2) // write a signed 24 bit int (3 bytes)
+writer.writeUInt32(2) // write an unsigned 24 bit int (3 bytes)
 writer.writeInt32(3) // write a signed 32 bit int (4 bytes)
 writer.writeUInt32(3) // write an unsigned 32 bit int (4 bytes)
 writer.writeFloat(3.14) // write a 32 bit float (4 bytes)
@@ -58,6 +60,8 @@ const buffer = new Writer()
     .writeUInt8(0)
     .writeInt16(1)
     .writeUInt16(1)
+    .writeInt24(2)
+    .writeUInt32(2)
     .writeInt32(3)
     .writeUInt32(3)
     .writeFloat(3.14)
@@ -74,6 +78,8 @@ console.log(reader.readInt8()) // outputs 0
 console.log(reader.readUInt8()) // outputs 0
 console.log(reader.readInt16()) // outputs 1
 console.log(reader.readUInt16()) // outputs 1
+console.log(reader.readInt24()) // outputs 2
+console.log(reader.readUInt24()) // outputs 2
 console.log(reader.readInt32()) // outputs 3
 console.log(reader.readUInt32()) // outputs 3
 console.log(reader.readFloat()) // ouputs 3.140000104904175
