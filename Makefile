@@ -1,3 +1,5 @@
+.PHONY: docs
+
 install:
 	deno cache mod.ts
 	deno cache tests/*
