@@ -22,11 +22,11 @@ Deno.test('write a signed 16 bit integer', () => {
     writer.writeInt16(1)
 })
 
-Deno.test('write an unsigned 24 bit integer (deprecated)', () => {
+Deno.test('write an unsigned 24 bit integer', () => {
     writer.writeUInt24(2)
 })
 
-Deno.test('write a signed 24 bit integer (deprecated)', () => {
+Deno.test('write a signed 24 bit integer', () => {
     writer.writeInt24(2)
 })
 
@@ -50,7 +50,7 @@ Deno.test('write a UCS-2 encoded string', () => {
     writer.writeZTStringUCS2('test')
 })
 
-Deno.test('write a UTF-8 encoded string (deprecated)', () => {
+Deno.test('write a UTF-8 encoded string', () => {
     writer.writeZTStringUTF8('test')
 })
 
@@ -75,11 +75,11 @@ Deno.test('read a signed 16 bit integer', () => {
     assertEquals(reader?.readInt16(), 1)
 })
 
-Deno.test('read an unsigned 24 bit integer (deprecated)', () => {
+Deno.test('read an unsigned 24 bit integer', () => {
     assertEquals(reader?.readUInt24(), 2)
 })
 
-Deno.test('read a signed 24 bit integer (deprecated)', () => {
+Deno.test('read a signed 24 bit integer', () => {
     assertEquals(reader?.readInt24(), 2)
 })
 
@@ -103,6 +103,6 @@ Deno.test('read a UCS-2 encoded string', () => {
     assertEquals(reader?.readZTStringUCS2(), 'test')
 })
 
-Deno.test('read a UTF-8 encoded string (deprecated)', () => {
+Deno.test('read a UTF-8 encoded string', () => {
     assertEquals(reader?.readZTStringUTF8(), 'test')
 })

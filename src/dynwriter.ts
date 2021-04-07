@@ -86,32 +86,32 @@ export class DynWriter {
 
     /**
      * Write an unsigned 24 bit integer to the current position in the Buffer.
-     * Actually writes an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
-     * Use `Writer.writeUInt32()`.
-     *
-     * @deprecated
      *
      * @param {number} value Value
      *
      * @returns {DynWriter}
      */
     writeUInt24(value: number): DynWriter {
-        return this.writeUInt32(value)
+        this.data[this.offset + 2] = value >> 16
+        this.data[this.offset + 1] = value >> 8
+        this.data[this.offset] = value & 0xff
+        this.offset += 3
+        return this
     }
 
     /**
      * Write a signed 24 bit integer to the current position in the Buffer.
-     * Actually writes a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
-     * Use `Writer.writeInt32()`.
-     *
-     * @deprecated
      *
      * @param {number} value Value
      *
      * @returns {DynWriter}
      */
     writeInt24(value: number): DynWriter {
-        return this.writeInt32(value)
+        this.data[this.offset] = value & 0xff
+        this.data[this.offset + 1] = value >> 8
+        this.data[this.offset + 2] = value >> 16
+        this.offset += 3
+        return this
     }
 
     /**

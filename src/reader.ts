@@ -98,28 +98,28 @@ export class Reader {
 
     /**
      * Read the unsigned 24 bit integer from the current position in the Buffer.
-     * Actually read an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
-     * Use `Reader.readUInt32()`.
-     *
-     * @deprecated
      *
      * @returns {number}
      */
     readUInt24(): number {
-        return this.readUInt32()
+        let value = 0
+        value = this.view.getInt8(this.offset + 2) << 16
+        value |= this.view.getInt8(this.offset + 1) << 8
+        value |= this.view.getInt8(this.offset)
+        this.offset += 3
+        return value
     }
 
     /**
      * Read the signed 24 bit integer from the current position in the Buffer.
-     * Actually reads a signed 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
-     * Use `Reader.readInt32()`.
-     *
-     * @deprecated
      *
      * @returns {number}
      */
     readInt24(): number {
-        return this.readInt32()
+        const value = this.readUInt24()
+        const negate = value & 0x800000
+        if (!negate) return value
+        return (0xffffff - value + 1) * -1
     }
 
     /**

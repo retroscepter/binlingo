@@ -107,7 +107,11 @@ export class Writer {
      * @returns {Writer}
      */
     writeUInt24(value: number): Writer {
-        return this.writeUInt32(value)
+        this.view.setInt8(this.offset + 2, value >> 16)
+        this.view.setInt8(this.offset + 1, value >> 8)
+        this.view.setInt8(this.offset, value & 0xff)
+        this.offset += 3
+        return this
     }
 
     /**
@@ -122,7 +126,11 @@ export class Writer {
      * @returns {Writer}
      */
     writeInt24(value: number): Writer {
-        return this.writeInt32(value)
+        this.view.setInt8(this.offset, value & 0xff)
+        this.view.setInt8(this.offset + 1, value >> 8)
+        this.view.setInt8(this.offset + 2, value >> 16)
+        this.offset += 3
+        return this
     }
 
     /**
@@ -210,20 +218,6 @@ export class Writer {
             }
         }
         this.writeUInt8(0)
-        return this
-    }
-
-    /**
-     * Copy data to the current position in the Buffer from another Buffer.
-     * This method does nothing and is only here for backwards compatibility.
-     *
-     * @deprecated
-     *
-     * @param {ArrayBuffer} buffer Buffer to copy from
-     *
-     * @returns {Writer}
-     */
-    writeBytes(buffer: ArrayBuffer): Writer {
         return this
     }
 
