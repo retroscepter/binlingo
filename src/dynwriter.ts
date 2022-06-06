@@ -36,7 +36,7 @@ export class DynWriter {
      *
      * @returns {DynWriter}
      */
-    writeUInt8(value: number): DynWriter {
+    writeUint8(value: number): DynWriter {
         this.data[this.offset] = value & 0xff
         this.offset++
         return this
@@ -63,7 +63,7 @@ export class DynWriter {
      *
      * @returns {DynWriter}
      */
-    writeUInt16(value: number): DynWriter {
+    writeUint16(value: number): DynWriter {
         this.data[this.offset] = value & 0xff
         this.data[this.offset + 1] = value >> 8
         this.offset += 2
@@ -91,7 +91,7 @@ export class DynWriter {
      *
      * @returns {DynWriter}
      */
-    writeUInt24(value: number): DynWriter {
+    writeUint24(value: number): DynWriter {
         this.data[this.offset + 2] = value >> 16
         this.data[this.offset + 1] = value >> 8
         this.data[this.offset] = value & 0xff
@@ -121,7 +121,7 @@ export class DynWriter {
      *
      * @returns {DynWriter}
      */
-    writeUInt32(value: number): DynWriter {
+    writeUint32(value: number): DynWriter {
         this.data[this.offset + 3] = value >> 24
         this.data[this.offset + 2] = value >> 16
         this.data[this.offset + 1] = value >> 8
@@ -183,10 +183,10 @@ export class DynWriter {
         if (string) {
             for (const char of string) {
                 const code = char.charCodeAt(0)
-                this.writeUInt16(code)
+                this.writeUint16(code)
             }
         }
-        this.writeUInt16(0)
+        this.writeUint16(0)
         return this
     }
 
@@ -201,10 +201,10 @@ export class DynWriter {
         if (string) {
             for (const char of string) {
                 const code = char.charCodeAt(0)
-                this.writeUInt8(code)
+                this.writeUint8(code)
             }
         }
-        this.writeUInt8(0)
+        this.writeUint8(0)
         return this
     }
 

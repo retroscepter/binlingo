@@ -57,7 +57,7 @@ export class Reader {
      *
      * @returns {number}
      */
-    readUInt8(): number {
+    readUint8(): number {
         const value = this.view.getUint8(this.offset)
         this.offset++
         return value
@@ -79,7 +79,7 @@ export class Reader {
      *
      * @returns {number}
      */
-    readUInt16(): number {
+    readUint16(): number {
         const value = this.view.getUint16(this.offset, true)
         this.offset += 2
         return value
@@ -101,7 +101,7 @@ export class Reader {
      *
      * @returns {number}
      */
-    readUInt24(): number {
+    readUint24(): number {
         let value = 0
         value = this.view.getInt8(this.offset + 2) << 16
         value |= this.view.getInt8(this.offset + 1) << 8
@@ -116,7 +116,7 @@ export class Reader {
      * @returns {number}
      */
     readInt24(): number {
-        const value = this.readUInt24()
+        const value = this.readUint24()
         const negate = value & 0x800000
         if (!negate) return value
         return (0xffffff - value + 1) * -1
@@ -127,7 +127,7 @@ export class Reader {
      *
      * @returns {number}
      */
-    readUInt32(): number {
+    readUint32(): number {
         const value = this.view.getUint32(this.offset, true)
         this.offset += 4
         return value
@@ -186,7 +186,7 @@ export class Reader {
         let index = this.offset
         const array: number[] = []
         while (index + 2 < this.length) {
-            const code = this.readUInt16()
+            const code = this.readUint16()
             if (code === 0) break
             else {
                 array.push(code)
@@ -205,7 +205,7 @@ export class Reader {
         let index = this.offset
         const array: number[] = []
         while (index + 1 < this.length) {
-            const code = this.readUInt8()
+            const code = this.readUint8()
             if (code === 0) break
             else {
                 array.push(code)

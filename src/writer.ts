@@ -50,7 +50,7 @@ export class Writer {
      *
      * @returns {Writer}
      */
-    writeUInt8(value: number): Writer {
+    writeUint8(value: number): Writer {
         this.view.setUint8(this.offset, value)
         this.offset++
         return this
@@ -76,7 +76,7 @@ export class Writer {
      *
      * @returns {Writer}
      */
-    writeUInt16(value: number): Writer {
+    writeUint16(value: number): Writer {
         this.view.setUint16(this.offset, value, true)
         this.offset += 2
         return this
@@ -98,7 +98,7 @@ export class Writer {
     /**
      * Write an unsigned 24 bit integer to the current position in the Buffer.
      * Actually writes an unsigned 32 bit integer because `DataView` doesn't natively support 24 bits, not recommended.
-     * Use `Writer.writeUInt32()`.
+     * Use `Writer.writeUint32()`.
      *
      * @deprecated
      *
@@ -106,7 +106,7 @@ export class Writer {
      *
      * @returns {Writer}
      */
-    writeUInt24(value: number): Writer {
+    writeUint24(value: number): Writer {
         this.view.setInt8(this.offset + 2, value >> 16)
         this.view.setInt8(this.offset + 1, value >> 8)
         this.view.setInt8(this.offset, value & 0xff)
@@ -140,7 +140,7 @@ export class Writer {
      *
      * @returns {Writer}
      */
-    writeUInt32(value: number): Writer {
+    writeUint32(value: number): Writer {
         this.view.setUint32(this.offset, value, true)
         this.offset += 4
         return this
@@ -196,10 +196,10 @@ export class Writer {
         if (string) {
             for (const char of string) {
                 const code = char.charCodeAt(0)
-                this.writeUInt16(code)
+                this.writeUint16(code)
             }
         }
-        this.writeUInt16(0)
+        this.writeUint16(0)
         return this
     }
 
@@ -214,10 +214,10 @@ export class Writer {
         if (string) {
             for (const char of string) {
                 const code = char.charCodeAt(0)
-                this.writeUInt8(code)
+                this.writeUint8(code)
             }
         }
-        this.writeUInt8(0)
+        this.writeUint8(0)
         return this
     }
 

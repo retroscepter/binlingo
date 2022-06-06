@@ -7,7 +7,7 @@ let buffer: ArrayBuffer | null = null
 let reader: Reader | null = null
 
 Deno.test('write an unsigned 8 bit integer', () => {
-    writer.writeUInt8(0)
+    writer.writeUint8(0)
 })
 
 Deno.test('write a signed 8 bit integer', () => {
@@ -15,7 +15,7 @@ Deno.test('write a signed 8 bit integer', () => {
 })
 
 Deno.test('write an unsigned 16 bit integer', () => {
-    writer.writeUInt16(1)
+    writer.writeUint16(1)
 })
 
 Deno.test('write a signed 16 bit integer', () => {
@@ -23,7 +23,7 @@ Deno.test('write a signed 16 bit integer', () => {
 })
 
 Deno.test('write an unsigned 24 bit integer', () => {
-    writer.writeUInt24(2)
+    writer.writeUint24(2)
 })
 
 Deno.test('write a signed 24 bit integer', () => {
@@ -31,7 +31,7 @@ Deno.test('write a signed 24 bit integer', () => {
 })
 
 Deno.test('write an unsigned 32 bit integer', () => {
-    writer.writeUInt32(3)
+    writer.writeUint32(3)
 })
 
 Deno.test('write a signed 32 bit integer', () => {
@@ -60,7 +60,7 @@ Deno.test('write to buffer', () => {
 })
 
 Deno.test('read an unsigned 8 bit integer', () => {
-    assertEquals(reader?.readUInt8(), 0)
+    assertEquals(reader?.readUint8(), 0)
 })
 
 Deno.test('read a signed 8 bit integer', () => {
@@ -68,7 +68,7 @@ Deno.test('read a signed 8 bit integer', () => {
 })
 
 Deno.test('read an unsigned 16 bit integer', () => {
-    assertEquals(reader?.readUInt16(), 1)
+    assertEquals(reader?.readUint16(), 1)
 })
 
 Deno.test('read a signed 16 bit integer', () => {
@@ -76,7 +76,7 @@ Deno.test('read a signed 16 bit integer', () => {
 })
 
 Deno.test('read an unsigned 24 bit integer', () => {
-    assertEquals(reader?.readUInt24(), 2)
+    assertEquals(reader?.readUint24(), 2)
 })
 
 Deno.test('read a signed 24 bit integer', () => {
@@ -84,7 +84,7 @@ Deno.test('read a signed 24 bit integer', () => {
 })
 
 Deno.test('read an unsigned 32 bit integer', () => {
-    assertEquals(reader?.readUInt32(), 3)
+    assertEquals(reader?.readUint32(), 3)
 })
 
 Deno.test('read a signed 32 bit integer', () => {
