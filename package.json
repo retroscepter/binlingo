@@ -1,28 +1,28 @@
 {
-  "name": "binlingo",
-  "version": "2.0.1",
-  "description": "Binary reader and writer utilities for Deno, Node.js and browsers.",
-  "main": "lib/index-node.js",
-  "types": "lib/index-node.d.ts",
-  "scripts": {
-    "test": "make test",
-    "prepublishOnly": "make build && make bundle"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/octavetoast/binlingo.git"
-  },
-  "author": "Braden Lamb",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/octavetoast/binlingo/issues"
-  },
-  "homepage": "https://github.com/octavetoast/binlingo#readme",
-  "devDependencies": {
-    "@types/node": "^14.14.37",
-    "typedoc": "^0.20.35",
-    "typescript": "^4.1.5",
-    "webpack": "^5.24.3",
-    "webpack-cli": "^4.5.0"
-  }
+    "name": "binlingo",
+    "version": "2.0.1",
+    "description": "Binary reader and writer utilities for Deno, Node.js and browsers.",
+    "main": "lib/index-node.js",
+    "types": "lib/index-node.d.ts",
+    "scripts": {
+        "test": "make test",
+        "prepublishOnly": "make build && make bundle"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/octavetoast/binlingo.git"
+    },
+    "author": "Braden Lamb",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/octavetoast/binlingo/issues"
+    },
+    "homepage": "https://github.com/octavetoast/binlingo#readme",
+    "devDependencies": {
+        "@types/node": "^17.0.40",
+        "typedoc": "^0.22.17",
+        "typescript": "^4.7.3",
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.9.2"
+    }
 }

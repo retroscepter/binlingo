@@ -3,7 +3,7 @@
 install:
 	deno cache mod.ts
 	deno cache tests/*
-	npm ci
+	yarn
 
 test:
 	deno test tests/*
