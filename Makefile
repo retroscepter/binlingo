@@ -1,9 +1,12 @@
 .PHONY: docs
 
 install:
+	make install-deno
+	yarn
+
+install-deno:
 	deno cache mod.ts
 	deno cache tests/*
-	yarn
 
 test:
 	deno test tests/*
@@ -13,13 +16,13 @@ test-coverage:
 	deno coverage --unstable coverage --lcov > coverage/lcov.info
 
 docs:
-	npx typedoc
+	yarn typedoc
 
 dev:
-	npx tsc -w -p tsconfig.json
+	yarn tsc -w -p tsconfig.json
 
 build:
-	npx tsc -p tsconfig.json
+	yarn tsc -p tsconfig.json
 
 bundle:
-	npx webpack
+	yarn webpack
