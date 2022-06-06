@@ -1,13 +1,12 @@
 {
     "name": "binlingo",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "Binary reader and writer utilities for Deno, Node.js and browsers.",
     "main": "lib/index-node.js",
     "types": "lib/index-node.d.ts",
     "scripts": {
         "test": "make test",
         "format": "make format",
-        "postinstall": "make install-deno",
         "prepublishOnly": "make build && make bundle"
     },
     "repository": {

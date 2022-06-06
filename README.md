@@ -15,7 +15,7 @@ npm install --save binlingo
 For use in the browser without a bundler, include this script tag in your HTML.
 
 ```HTML
-<script src="https://unpkg.com/binlingo@3.0.0/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@3.0.1/dist/binlingo.js"></script>
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ const { Reader, Writer } = require('binlingo')
 import { Reader, Writer } from 'binlingo'
 
 // deno
-import { Reader, Writer } from 'https://deno.land/x/binlingo@3.0.0/mod.ts'
+import { Reader, Writer } from 'https://deno.land/x/binlingo@3.0.1/mod.ts'
 
 // in the browser
 const { Reader, Writer } = window.Binlingo
