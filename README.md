@@ -15,7 +15,7 @@ npm install --save binlingo
 For use in the browser without a bundler, include this script tag in your HTML.
 
 ```HTML
-<script src="https://unpkg.com/binlingo@2.0.1/dist/binlingo.js"></script>
+<script src="https://unpkg.com/binlingo@3.0.0/dist/binlingo.js"></script>
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ const { Reader, Writer } = require('binlingo')
 import { Reader, Writer } from 'binlingo'
 
 // deno
-import { Reader, Writer } from 'https://deno.land/x/binlingo@2.0.1/mod.ts'
+import { Reader, Writer } from 'https://deno.land/x/binlingo@3.0.0/mod.ts'
 
 // in the browser
 const { Reader, Writer } = window.Binlingo
@@ -48,8 +48,7 @@ writer.writeInt32(3) // write a signed 32 bit int (4 bytes)
 writer.writeUInt32(3) // write an unsigned 32 bit int (4 bytes)
 writer.writeFloat(3.14) // write a 32 bit float (4 bytes)
 writer.writeDouble(4.0001) // write a 64 bit double (8 bytes) (more precise than a float)
-writer.writeZTStringUTF8('hello world') // write a utf-8 encoded string
-writer.writeZTStringUCS2('hello world ☺') // write a ucs-2 (utf-8 + unicode) encoded string
+writer.writeZTStringUTF8('hello world ☺') // write a utf-8 encoded string
 
 const buffer = writer.finalize() // converted to buffer, arraybuffer or typed array
 
@@ -66,8 +65,7 @@ const buffer = new Writer()
     .writeUInt32(3)
     .writeFloat(3.14)
     .writeDouble(4.0001)
-    .writeZTStringUTF8('hello world')
-    .writeZTStringUCS2('hello world ☺')
+    .writeZTStringUTF8('hello world ☺')
     .finalize()
 
 /* make a reader and read our data */
@@ -84,8 +82,7 @@ console.log(reader.readInt32()) // outputs 3
 console.log(reader.readUInt32()) // outputs 3
 console.log(reader.readFloat()) // ouputs 3.140000104904175
 console.log(reader.readDouble()) // outputs 4.0001
-console.log(reader.readZTStringUTF8()) // outputs "hello world"
-console.log(reader.readZTStringUCS2()) // outputs "hello world ☺"
+console.log(reader.readZTStringUTF8()) // outputs "hello world ☺"
 ```
 
 ## [API Documentation](https://octavetoast.github.io/binlingo)

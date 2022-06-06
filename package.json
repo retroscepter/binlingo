@@ -1,6 +1,6 @@
 {
     "name": "binlingo",
-    "version": "2.0.1",
+    "version": "3.0.0",
     "description": "Binary reader and writer utilities for Deno, Node.js and browsers.",
     "main": "lib/index-node.js",
     "types": "lib/index-node.d.ts",
