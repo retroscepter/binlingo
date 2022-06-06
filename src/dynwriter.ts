@@ -177,17 +177,11 @@ export class DynWriter {
      *
      * @param {string} string Value
      *
+     * @deprecated
      * @returns {DynWriter}
      */
     writeZTStringUCS2(string: string): DynWriter {
-        if (string) {
-            for (const char of string) {
-                const code = char.charCodeAt(0)
-                this.writeUint16(code)
-            }
-        }
-        this.writeUint16(0)
-        return this
+        return this.writeZTStringUTF8(string)
     }
 
     /**
@@ -198,13 +192,13 @@ export class DynWriter {
      * @returns {DynWriter}
      */
     writeZTStringUTF8(string: string): DynWriter {
-        if (string) {
-            for (const char of string) {
-                const code = char.charCodeAt(0)
-                this.writeUint8(code)
-            }
-        }
+        const escapedString = unescape(encodeURIComponent(string))
+
+        for (let i = 0, l = escapedString.length; i < l; i++)
+            this.writeUint8(escapedString.charCodeAt(i))
+
         this.writeUint8(0)
+
         return this
     }
 

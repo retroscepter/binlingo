@@ -50,8 +50,16 @@ Deno.test('write a UCS-2 encoded string', () => {
     writer.writeZTStringUCS2('test')
 })
 
+Deno.test('write a UCS-2 encoded string (unicode)', () => {
+    writer.writeZTStringUCS2('𝙩𝙚𝙨𝙩')
+})
+
 Deno.test('write a UTF-8 encoded string', () => {
     writer.writeZTStringUTF8('test')
+})
+
+Deno.test('write a UTF-8 encoded string (unicode)', () => {
+    writer.writeZTStringUTF8('𝙩𝙚𝙨𝙩')
 })
 
 Deno.test('write to buffer', () => {
@@ -103,6 +111,14 @@ Deno.test('read a UCS-2 encoded string', () => {
     assertEquals(reader?.readZTStringUCS2(), 'test')
 })
 
+Deno.test('read a UCS-2 encoded string (unicode)', () => {
+    assertEquals(reader?.readZTStringUCS2(), '𝙩𝙚𝙨𝙩')
+})
+
 Deno.test('read a UTF-8 encoded string', () => {
     assertEquals(reader?.readZTStringUTF8(), 'test')
+})
+
+Deno.test('read a UTF-8 encoded string (unicode)', () => {
+    assertEquals(reader?.readZTStringUTF8(), '𝙩𝙚𝙨𝙩')
 })

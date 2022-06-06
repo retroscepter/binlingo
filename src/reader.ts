@@ -180,20 +180,11 @@ export class Reader {
     /**
      * Read the UCS-2 encoded string from the current position in the Buffer.
      *
+     * @deprecated
      * @returns {string}
      */
     readZTStringUCS2(): string {
-        let index = this.offset
-        const array: number[] = []
-        while (index + 2 < this.length) {
-            const code = this.readUint16()
-            if (code === 0) break
-            else {
-                array.push(code)
-                index += 2
-            }
-        }
-        return array.reduce((s, c) => s + String.fromCharCode(c), '')
+        return this.readZTStringUTF8()
     }
 
     /**
@@ -202,16 +193,12 @@ export class Reader {
      * @returns {string}
      */
     readZTStringUTF8(): string {
-        let index = this.offset
-        const array: number[] = []
-        while (index + 1 < this.length) {
-            const code = this.readUint8()
-            if (code === 0) break
-            else {
-                array.push(code)
-                index += 1
-            }
-        }
-        return array.reduce((s, c) => s + String.fromCharCode(c), '')
+        let string = ''
+        let byte: number
+
+        while ((byte = this.readUint8()) !== 0)
+            string += String.fromCharCode(byte)
+
+        return decodeURIComponent(escape(string))
     }
 }

@@ -190,17 +190,11 @@ export class Writer {
      *
      * @param {string} string Value
      *
+     * @deprecated
      * @returns {Writer}
      */
     writeZTStringUCS2(string: string): Writer {
-        if (string) {
-            for (const char of string) {
-                const code = char.charCodeAt(0)
-                this.writeUint16(code)
-            }
-        }
-        this.writeUint16(0)
-        return this
+        return this.writeZTStringUTF8(string)
     }
 
     /**
@@ -211,13 +205,13 @@ export class Writer {
      * @returns {Writer}
      */
     writeZTStringUTF8(string: string): Writer {
-        if (string) {
-            for (const char of string) {
-                const code = char.charCodeAt(0)
-                this.writeUint8(code)
-            }
-        }
+        const escapedString = unescape(encodeURIComponent(string))
+
+        for (let i = 0, l = escapedString.length; i < l; i++)
+            this.writeUint8(escapedString.charCodeAt(i))
+
         this.writeUint8(0)
+
         return this
     }
 
